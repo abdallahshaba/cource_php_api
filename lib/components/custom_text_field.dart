@@ -7,8 +7,9 @@ class CustomTextField extends StatelessWidget {
       required this.name,
       required this.icon,
       this.onTap,
-      required this.myController});
+      required this.myController, this.valid});
   final String hintText;
+  final String? Function(String?)? valid;
   final String name;
   final Icon icon;
   final void Function()? onTap;
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: valid ,
       controller: myController,
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
