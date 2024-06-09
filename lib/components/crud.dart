@@ -28,7 +28,7 @@ class Crud {
 
   // Post Request
   postRequest(String url , Map data) async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     try {
       var respons = await http.post(Uri.parse(url) , body: data);
       if(respons.statusCode==200){

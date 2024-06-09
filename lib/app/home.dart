@@ -1,3 +1,4 @@
+import 'package:cource_php_app/main.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
         child: const Icon(Icons.add , size: 40,),
         ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: (){
+              sharedPreference.clear();
+              Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
+            }, icon: const Icon(Icons.exit_to_app)
+            )
+        ],
         title: const Text("Home"),
       ),
       body: Container(

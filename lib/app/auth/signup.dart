@@ -37,7 +37,7 @@ class _LoginScreenState extends State<SignUpScreen> {
       setState(() {});
 
       if (respons2['status'] == 'Success') {
-        Navigator.of(context).pushNamed('home');
+        Navigator.of(context).pushNamed('login');
       } else {
         print("signUp fail");
       }
