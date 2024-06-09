@@ -1,5 +1,7 @@
+import 'package:cource_php_app/components/crud.dart';
 import 'package:cource_php_app/components/custom_button.dart';
 import 'package:cource_php_app/components/custom_text_field.dart';
+import 'package:cource_php_app/constant/link_api.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -11,9 +13,30 @@ class SignUpScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<SignUpScreen> {
   GlobalKey<FormState> formstate = GlobalKey();
+
+  Crud _crud = Crud();
+
   TextEditingController email = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
+
+
+signUp() async {
+ var respons2 = await _crud.postRequest(linkSignUp, {
+    "username" : username.text,
+    "email"    : email.text,
+    "password" : password.text
+  });
+
+  if(respons2['status'] == 'Success'){
+    Navigator.of(context).pushNamed('home');
+  }
+  else {
+    print("signUp fail");
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +80,9 @@ class _LoginScreenState extends State<SignUpScreen> {
             const SizedBox(
               height: 140,
             ),
-            CustomButtonAuth(text22: "Sign Up", onPressed: () {}),
+            CustomButtonAuth(text22: "Sign Up", onPressed: () async {
+             await signUp();
+            }),
             const SizedBox(height: 10,),
             InkWell(
             onTap: () {
