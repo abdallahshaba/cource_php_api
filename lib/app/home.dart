@@ -1,3 +1,4 @@
+import 'package:cource_php_app/app/notes/edit.dart';
 import 'package:cource_php_app/components/crud.dart';
 import 'package:cource_php_app/components/custom_card.dart';
 import 'package:cource_php_app/constant/link_api.dart';
@@ -12,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
   
   Crud _crud = Crud();
 
@@ -60,7 +63,12 @@ class _HomeScreenState extends State<HomeScreen> {
                    shrinkWrap: true,
                    physics: const NeverScrollableScrollPhysics(),
                    itemBuilder: (context, index) {
-                     return CustomCard(title: "${snapshot.data['content'][index]['notes_title']}",
+                     return CustomCard(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => EditNote(notesData: snapshot.data['content'][index] ,)));
+                      },
+                      title: "${snapshot.data['content'][index]['notes_title']}",
                     subtitle: '${snapshot.data['content'][index]['notes_content']}');
                    },
                    );
