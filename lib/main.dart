@@ -1,6 +1,8 @@
 import 'package:cource_php_app/app/auth/login.dart';
 import 'package:cource_php_app/app/auth/signup.dart';
 import 'package:cource_php_app/app/home.dart';
+import 'package:cource_php_app/app/notes/add.dart';
+import 'package:cource_php_app/app/notes/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
       routes: {
         "home" : (context) => const HomeScreen(),
         "login" : (context) => const LoginScreen(),
-        "signUp" :(context) => const SignUpScreen()
+        "signUp" :(context) => const SignUpScreen(),
+        "addnote" :(context) => const AddNote(),
+        "editnote" :(context) => const EditNote(),
       },
     );
   }
