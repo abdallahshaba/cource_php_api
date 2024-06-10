@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return response;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
                    physics: const NeverScrollableScrollPhysics(),
                    itemBuilder: (context, index) {
                      return CustomCard(
+                      onPressed: () async {
+                        var response = await _crud.postRequest(linkdeleteNote, {
+                          "id" : snapshot.data['content'][index]['notes_id']
+                        });
+                        if (response['status'] == 'Success') {
+                          // ignore: use_build_context_synchronously
+                          Navigator.pushReplacementNamed(context, 'home');
+                          
+                        }
+                      },
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => EditNote(notesData: snapshot.data['content'][index] ,)));

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.title, required this.subtitle, this.onTap});
+  const CustomCard({super.key, required this.title, required this.subtitle, this.onTap, required this.onPressed,});
 
   final String title;
   final String subtitle;
   final void Function()? onTap;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +28,11 @@ class CustomCard extends StatelessWidget {
                         Expanded(
                         flex: 2,
                         child: ListTile(
-                          
+                          trailing: IconButton(onPressed: onPressed, icon: const Icon(Icons.delete)),
                           title: Text(title , style: const TextStyle(fontSize: 20),),
                           subtitle: Text(subtitle, style: const TextStyle(fontSize: 18),),
-                        ))
+                        )),
+
                     ],
                   ),
                 ),
