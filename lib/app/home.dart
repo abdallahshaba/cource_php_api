@@ -1,3 +1,4 @@
+import 'package:cource_php_app/app/model/note_model.dart';
 import 'package:cource_php_app/app/notes/edit.dart';
 import 'package:cource_php_app/components/crud.dart';
 import 'package:cource_php_app/components/custom_card.dart';
@@ -77,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => EditNote(notesData: snapshot.data['content'][index] ,)));
                       },
-                      title: "${snapshot.data['content'][index]['notes_title']}",
-                    subtitle: '${snapshot.data['content'][index]['notes_content']}');
+                      noteModel: NoteModel.fromJson(snapshot.data['content'][index])
+                   );
                    },
                    );
 

@@ -1,10 +1,10 @@
+import 'package:cource_php_app/app/model/note_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.title, required this.subtitle, this.onTap, required this.onPressed,});
+  const CustomCard({super.key, this.onTap, required this.onPressed, required this.noteModel,});
 
-  final String title;
-  final String subtitle;
+  final NoteModel noteModel;
   final void Function()? onTap;
   final void Function()? onPressed;
 
@@ -29,8 +29,8 @@ class CustomCard extends StatelessWidget {
                         flex: 2,
                         child: ListTile(
                           trailing: IconButton(onPressed: onPressed, icon: const Icon(Icons.delete)),
-                          title: Text(title , style: const TextStyle(fontSize: 20),),
-                          subtitle: Text(subtitle, style: const TextStyle(fontSize: 18),),
+                          title: Text("${noteModel.notesTitle}" , style: const TextStyle(fontSize: 20),),
+                          subtitle: Text("${noteModel.notesContent}", style: const TextStyle(fontSize: 18),),
                         )),
 
                     ],
